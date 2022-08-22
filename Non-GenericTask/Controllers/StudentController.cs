@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Non_GenericTask.Models;
 using Non_GenericTask.Repository;
 using Non_GenericTask.Services;
@@ -8,15 +9,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Non_GenericTask.Controllers
-{
+{   
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase 
     {
-        private readonly IStudent _student;
-        public StudentController(IStudent student)
+        private readonly IStudent _student; 
+        public StudentController(IStudent student) 
         {
-            _student = student;                     //// with Dependency Injection
+            _student = student;                      //// with Dependency Injection
 
         }
 
@@ -53,8 +55,16 @@ namespace Non_GenericTask.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAlLStudent()
         {
-            var res = (await _student.GetStudents());
-            return Ok(res);
+            try
+            {
+                var res = (await _student.GetStudents());
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
 
         }
 
@@ -62,12 +72,19 @@ namespace Non_GenericTask.Controllers
         [HttpGet("{Id}")]
         public async Task<ActionResult> GettheStudentByID(int Id)
         {
-            var res = await _student.GetStudent(Id);
-            if (res == null)
+            try
             {
-                return BadRequest("No Student Found!");
+                var res = await _student.GetStudent(Id);
+                if (res == null)
+                {
+                    return BadRequest("No Student Found!");
+                }
+                return Ok(res);
             }
-            return Ok(res);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST: api/[controller]
@@ -83,12 +100,20 @@ namespace Non_GenericTask.Controllers
 
         public async Task<ActionResult> DeleteStudentByID(int Id)
         {
-            var res = await _student.DeleteStudent(Id);
-            if (res == null)
+            try
             {
-                return BadRequest("No Student Found!");
+                var res = await _student.DeleteStudent(Id);
+                if (res == null)
+                {
+                    return BadRequest("No Student Found!");
+                }
+                return Ok(res);
             }
-            return Ok(res);
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -96,13 +121,21 @@ namespace Non_GenericTask.Controllers
 
         public async Task<ActionResult> UpateStudentByID(Student student)
         {
-            var res = await _student.UpdateStudent(student);
-            //if (res == null)
-            //{
-            //    return BadRequest("No Student Found!");
-            //}
+            try
+            {
+                var res = await _student.UpdateStudent(student);
+                //if (res == null)
+                //{
+                //    return BadRequest("No Student Found!");
+                //}
 
-            return Ok(res);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
 

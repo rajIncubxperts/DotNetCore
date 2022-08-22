@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\source\\repos\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj": {}
+    "C:\\Users\\Dell\\Desktop\\New folder\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\source\\repos\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj": {
+    "C:\\Users\\Dell\\Desktop\\New folder\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\New folder\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj",
         "projectName": "Non-GenericTask",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj",
+        "projectPath": "C:\\Users\\Dell\\Desktop\\New folder\\Non-GenericTask\\Non-GenericTask\\Non-GenericTask.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\Non-GenericTask\\Non-GenericTask\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\Desktop\\New folder\\Non-GenericTask\\Non-GenericTask\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
